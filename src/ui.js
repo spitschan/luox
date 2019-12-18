@@ -1,5 +1,6 @@
 import {mapSamples, calculateLuminance, calculateIrradiance, interpolateData} from './rows.js'
 import {downloadCSVButton} from './csvExport.js'
+import {createChart} from './spectrumChart.js'
 
 const asExponential = (number) => number.toExponential(2)
 const asDecimal = (number) => number.toFixed(2)
@@ -74,7 +75,7 @@ const createDownloadButtons = (element, calculationTable, spectrumTable) => {
   element.appendChild(spectrumCSVButton);
 }
 
-export const createTables = (rawRows, sampleCount, spectrumTable, calculationTable, areaUnitSelect, powerUnitSelect, footerButtons) => {
+export const createTables = (rawRows, sampleCount, spectrumTable, calculationTable, areaUnitSelect, powerUnitSelect, footerButtons, chartCanvas) => {
   const unitConversion = conversionFunction(areaUnitSelect, powerUnitSelect)
   const rows = mapSamples(rawRows, unitConversion)
   const interpolatedRows = interpolateData(rows, sampleCount)
@@ -82,6 +83,9 @@ export const createTables = (rawRows, sampleCount, spectrumTable, calculationTab
   createCalculationTable(calculationTable, interpolatedRows, sampleCount)
   createSpectrumTable(spectrumTable, rows, sampleCount)
   createDownloadButtons(footerButtons, calculationTable, spectrumTable)
+
+  const sampleIdxToChart = 0
+  createChart(chartCanvas, interpolatedRows, sampleIdxToChart)
 }
 
 export const createErrorTable = (errors, fileUploadedSection) => {
