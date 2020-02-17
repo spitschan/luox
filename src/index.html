@@ -8,6 +8,7 @@
 <style type="text/css">
 body {
   font-family: Verdana, sans-serif;
+  font-size: 0.9rem;
 }
 
 table.errors {
@@ -85,22 +86,29 @@ footer #table-actions a {
   <div id="file-uploaded">
     <a href=".">Choose another dataset</a>
   </div>
-  <table class="table table-sm mt-4 result-table" id="calculation-table">
-  </table>
 
-  <form id="chart-data-source">
-    <hr>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" name="chart-data" value="raw" id="chart-data-raw">
-      <label class="form-check-label" for="chart-data-raw">Raw data</label>
-    </div>
-    <div class="form-check-inline">
-      <input class="form-check-input" type="radio" name="chart-data" value="normalised" id="chart-data-normalised">
-      <label class="form-check-label" for="chart-data-normalised">Normalised data</label>
-    </div>
-  </form>
+  <div class="row">
+    <div class="col-xl-6">
+      <form id="chart-data-source">
+        <div class="form-check-inline">
+          <input class="form-check-input" type="radio" name="chart-data" value="raw" id="chart-data-raw">
+          <label class="form-check-label" for="chart-data-raw">Raw data</label>
+        </div>
+        <div class="form-check-inline">
+          <input class="form-check-input" type="radio" name="chart-data" value="normalised" id="chart-data-normalised">
+          <label class="form-check-label" for="chart-data-normalised">Normalised data</label>
+        </div>
+      </form>
 
-  <canvas id="chart-canvas" width="400" height="200"></canvas>
+      <canvas id="chart-canvas"></canvas>
+    </div>
+
+    <div class="col-xl-6">
+      <table class="table table-sm mt-4 result-table" id="calculation-table">
+      </table>
+    </div>
+  </div>
+
   <table class="table table-sm mt-4 result-table" id="spectrum-table">
   </table>
 </div>
