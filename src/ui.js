@@ -55,7 +55,7 @@ const createCalculationTable = (table, rows, sampleCount) => {
   const lConeTotals = calculateIrradiance(rows, sampleCount, 'lCone')
   const rodTotals = calculateIrradiance(rows, sampleCount, 'rod')
   const melTotals = calculateIrradiance(rows, sampleCount, 'mel')
-  createTableRow(table, "Illuminance [lux]", luminanceTotals, asDecimal)
+  createTableRow(table, "Illuminance [lux]", luminanceTotals, asExponential)
   createTableRow(table, "S-cone-opic irradiance (mW/m²)", sConeTotals, asExponential)
   createTableRow(table, "M-cone-opic irradiance (mW/m²)", mConeTotals, asExponential)
   createTableRow(table, "L-cone-opic irradiance (mW/m²)", lConeTotals, asExponential)

@@ -3,6 +3,7 @@ import {createTables, createErrorTable} from './ui.js'
 
 const fileInput = document.getElementById('file-input')
 const uploadForm = document.getElementById('upload-form')
+const numberFormatToggle = document.getElementById('table-number-format')
 
 const handleFileSelect = () => {
   const fileList = fileInput.files
@@ -40,5 +41,23 @@ const handleSubmit = async (event) => {
   }
 }
 
+const toggleNumberFormat = (event) => {
+  if (event.target.value === 'scientific') {
+    $('#calculation-table tr td').each(function(index, element) {
+      if (!isNaN(element.innerText)) {
+        element.innerText = Number(element.innerText).toExponential(2)
+      }
+    })
+  } else if (event.target.value === 'decimal') {
+    $('#calculation-table tr td').each(function(index, element) {
+      if (!isNaN(element.innerText)) {
+        element.innerText = Number(element.innerText).toFixed(2)
+      }
+    })
+  }
+}
+
 fileInput.addEventListener("change", handleFileSelect, false);
 uploadForm.addEventListener("submit", handleSubmit, false);
+numberFormatToggle.addEventListener("click", toggleNumberFormat, false);
+$('#table-number-format input#number-format-scientific').prop('checked', true)
