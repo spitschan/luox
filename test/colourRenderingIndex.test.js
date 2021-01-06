@@ -45,6 +45,14 @@ describe("uvToCorrelatedColourTemperatureRobertson", () => {
     );
     expect(cct.toFixed(3)).toEqual("6500.016");
   });
+
+  it("does not raise a TypeError", () => {
+    const cct = uvToCorrelatedColourTemperatureRobertson(
+      0.25686519407615915,
+      0.010984366851941015
+    );
+    expect(cct.toFixed(3)).toEqual("-436.680");
+  });
 });
 
 describe("blackBodyReferenceSpectra", () => {

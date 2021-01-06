@@ -41,7 +41,7 @@ export const uvToCorrelatedColourTemperatureRobertson = (u, v) => {
 
     let dt = -uu * dv + vv * du;
 
-    if (dt <= 0 || i === 30) {
+    if ((dt <= 0 || i === 30) && wrRuvtPrevious) {
       if (dt > 0) {
         dt = 0;
       }
